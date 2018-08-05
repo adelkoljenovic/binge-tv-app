@@ -1,0 +1,2 @@
+class TeleSelection < ApplicationRecord
+end

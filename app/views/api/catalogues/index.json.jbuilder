@@ -1,3 +1,5 @@
-json.data @catalogue['id']
-json.data @catalogue['airedSeason']
+json.adel @catalogue['backdrop_path']
+json.data1 @catalogue['created_by']
 json.data @catalogue['firstAired']
+
+

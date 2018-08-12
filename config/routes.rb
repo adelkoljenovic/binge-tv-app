@@ -3,5 +3,9 @@ Rails.application.routes.draw do
   # verb "/urls" => "namespace/controllers#action"
   namespace :api do
     get "/catalogues" => "catalogues#index"
+
+
+    # Signup (create a new user)
+    post "/users" => "users#create"
   end
 end

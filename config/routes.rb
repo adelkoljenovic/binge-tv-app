@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     get "/catalogues" => "catalogues#index"
 
 
-    # Signup (create a new user)
+    # Signup, login & logout
     post "/users" => "users#create"
+    post "/sessions" => "sessions#create"
+
   end
 end

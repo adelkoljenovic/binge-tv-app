@@ -113,7 +113,8 @@ var ViewGroupPage = {
   template: "#view-group-page",
   data: function() {
     return {
-      groups: []
+      groups: [],
+      users: []
     };
   },
   created: function() {
@@ -123,6 +124,14 @@ var ViewGroupPage = {
       this.groups = response.data;
     }.bind(this)); 
   },
+  join: function() {
+    console.log("in the join function");
+    axios.get('api/users').then(function(response) {
+      console.log(response.data);
+      this.users = response.data;
+    }.bind(this));
+  },
+
   methods: {},
   computed: {}
 };

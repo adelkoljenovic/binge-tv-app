@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   namespace :api do
     get "/catalogues" => "catalogues#index"
 
+    get "/groups" => "groups#index"
+    post "/groups" => "groups#create"
+
 
     # Signup, login & logout
     post "/users" => "users#create"

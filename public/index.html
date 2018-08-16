@@ -11,9 +11,12 @@
 <body>
   <div id="vue-app">
 
+    <a href="/">Home Page</a>
     <a href="/#/signup">Signup</a>
     <a href="/#/login">Login</a>
     <a href="/#/logout">Logout</a>
+    <a href="/#/groups/create">Create Group Name</a>
+    <a href="/#/groups/view">View All Groups</a>
 
     <router-view></router-view>
 
@@ -97,5 +100,31 @@
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>
     </div>
 
+  </div>
+</template>
+
+<template id="create-group-page">
+  <div class="vue-component">
+
+    <div class="container">
+      <h1>Create Group Name</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+      <div class="form-group">
+        <label>Group Name:</label> 
+        <input type="text" class="form-control" v-model="name">
+      </div>
+      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+    </div>
+  </div>
+</template>
+
+<template id="view-group-page">
+  <div class="vue-component">
+    <div v-for="group in groups">
+      <p class="group-name">Group Name: {{ group.name }}</p>
+      <hr>
+    </div>
   </div>
 </template>

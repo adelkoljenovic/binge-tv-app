@@ -81,6 +81,52 @@ var SignupPage = {
   }
 };
 
+var CreateGroupPage = {
+  template: "#create-group-page",
+  data: function() {
+    return {
+      name: "",
+      errors: []
+    };
+  },
+  methods: {
+    submit: function() {
+      var params = {
+        name: this.name,
+        // what is the errors function doing for this create; errors code was taken from sign up pag? --- do I need?
+      };
+      axios
+        .post("/api/groups", params)
+        .then(function(response) {
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    }
+  }
+};
+
+var ViewGroupPage = {
+  template: "#view-group-page",
+  data: function() {
+    return {
+      groups: []
+    };
+  },
+  created: function() {
+    console.log("in the created function");
+    axios.get('/api/groups').then(function(response) {
+      console.log(response.data);
+      this.groups = response.data;
+    }.bind(this)); 
+  },
+  methods: {},
+  computed: {}
+};
+
 var HomePage = {
   template: "#home-page",
   data: function() {
@@ -115,6 +161,8 @@ var HomePage = {
 var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
+    { path: "/groups/create", component: CreateGroupPage },
+    { path: "/groups/view", component: ViewGroupPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/logout", component: LogoutPage }

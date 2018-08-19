@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get "/groups" => "groups#index"
     post "/groups" => "groups#create"
 
+    post "/group_users" => "group_users#create"
+
 
     # Signup, login & logout
     post "/users" => "users#create"

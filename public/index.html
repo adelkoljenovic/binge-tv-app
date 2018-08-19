@@ -129,7 +129,7 @@
     <div v-for="group in groups">
       <p class="group-id">Group Id: {{ group.id }}</p>
       <p class="group-name">Group Name: {{ group.name }}</p>
-      <button v-on:click="join()">Join this Group</button>
+      <button class="btn btn-primary" v-on:click="join(group.id)">Join this Group</button>
       <hr>
     </div>
   </div>

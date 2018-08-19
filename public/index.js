@@ -138,6 +138,40 @@ var ViewGroupPage = {
   computed: {}
 };
 
+var SetupLocationPage = {
+  template: "#setup-location-page",
+  data: function() {
+    return {
+      streetAddress: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      errors: []
+    };
+  },
+  methods: {
+    submit: function() {
+      var params = {
+        street_address: this.streetAddress,
+        city: this.city,
+        state: this.state,
+        zip_code: this.zipCode
+        // what is the errors function doing for this create; errors code was taken from sign up pag? --- do I need?
+      };
+      axios
+        .post("/api/locations", params)
+        .then(function(response) {
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    }
+  }
+};
+
 
 var HomePage = {
   template: "#home-page",
@@ -175,6 +209,7 @@ var router = new VueRouter({
     { path: "/", component: HomePage },
     { path: "/groups/create", component: CreateGroupPage },
     { path: "/groups/view", component: ViewGroupPage },
+    { path: "/location/setup", component: SetupLocationPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/logout", component: LogoutPage }

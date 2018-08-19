@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
     post "/group_users" => "group_users#create"
 
+    post "/locations" => "locations#create"
+
 
     # Signup, login & logout
     post "/users" => "users#create"

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
     post "/group_users" => "group_users#create"
 
+    get "/locations" => "locations#index"
     post "/locations" => "locations#create"
 
 

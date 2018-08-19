@@ -19,6 +19,7 @@
     <a href="/#/groups/create">Create Group Name</a>
     <a href="/#/groups/view">View All Groups</a>
     <a href="/#/location/setup">Set Your Location</a>
+    <a href="/#/location/view">View All Locations</a>
 
     <router-view></router-view>
 
@@ -162,6 +163,21 @@
       </div>
       </div>
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+    </div>
+  </div>
+</template>
+
+<template id="view-location-page">
+  <div class="vue-component">
+    <h1>View All Locations</h1>
+    <div v-for="location in locations">
+      <p class="location-id">Location Id: {{ location.id }}</p>
+      <p class="location-street-address">Street Address: {{ location.street_address }}</p>
+      <p class="location-street-address">City: {{ location.city }}</p>
+      <p class="location-street-address">State: {{ location.state }}</p>
+      <p class="location-street-address">Zip Code: {{ location.zip_code }}</p>
+      <button class="btn btn-primary" v-on:click="selectLocation(location.id)">Select this Location</button>
+      <hr>
     </div>
   </div>
 </template>

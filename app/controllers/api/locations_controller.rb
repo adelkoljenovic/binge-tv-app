@@ -1,4 +1,9 @@
 class Api::LocationsController < ApplicationController
+  def index
+    @locations = Location.all
+    render "index.json.jbuilder"
+  end
+
   def create
     @location = Location.new(
       street_address: params[:street_address],

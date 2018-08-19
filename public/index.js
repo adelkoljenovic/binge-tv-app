@@ -172,6 +172,35 @@ var SetupLocationPage = {
   }
 };
 
+var ViewLocationPage = {
+  template: "#view-location-page",
+  data: function() {
+    return {
+      locations: []
+    };
+  },
+  created: function() {
+    console.log("in the created function of view location page");
+    axios.get('/api/locations').then(function(response) {
+      console.log(response.data);
+      this.locations = response.data;
+    }.bind(this)); 
+  },
+
+  methods: {
+    join: function(groupId) {
+      var params = {
+        id: groupId
+      };
+      // console.log("in the join function");
+      axios.post('/api/group_users', params).then(function(response) {
+        console.log(response.data);
+      }.bind(this));
+    }
+  },
+  computed: {}
+};
+
 
 var HomePage = {
   template: "#home-page",
@@ -210,6 +239,7 @@ var router = new VueRouter({
     { path: "/groups/create", component: CreateGroupPage },
     { path: "/groups/view", component: ViewGroupPage },
     { path: "/location/setup", component: SetupLocationPage },
+    { path: "/location/view", component: ViewLocationPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/logout", component: LogoutPage }

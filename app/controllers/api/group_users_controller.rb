@@ -1,4 +1,4 @@
-class Api::GroupUsersController < ApplicationController
+class Api::GroupUsersController < ApplicationController    
   def create
     @group_user = GroupUser.new(
       group_id: params[:id],

@@ -113,7 +113,8 @@ var ViewGroupPage = {
   template: "#view-group-page",
   data: function() {
     return {
-      groups: []
+      groups: [],
+      group_users: []
     };
   },
   created: function() {

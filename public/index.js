@@ -139,8 +139,8 @@ var ViewGroupPage = {
   computed: {}
 };
 
-var SetupLocationPage = {
-  template: "#setup-location-page",
+var SetupSelectionPage = {
+  template: "#setup-selection-page",
   data: function() {
     return {
       streetAddress: "",
@@ -271,7 +271,7 @@ var router = new VueRouter({
     { path: "/", component: HomePage },
     { path: "/groups/create", component: CreateGroupPage },
     { path: "/groups/view", component: ViewGroupPage },
-    { path: "/location/setup", component: SetupLocationPage },
+    { path: "/selections/setup", component: SetupSelectionPage },
     { path: "/location/view", component: ViewLocationPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },

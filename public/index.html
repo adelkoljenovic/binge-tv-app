@@ -33,15 +33,17 @@
 <template id="home-page">
   <div class="vue-component">
 
-    TV Series: <input placeholder="search" v-model='newSearch.name'>
+    TV Series/Movie Search: <input placeholder="search" v-model='newSearch.name'>
     <button v-on:click="newTvSearch()">Search</button>
 
+    <button class="btn btn-primary" v-on:click="select(catalogues.results[0].name)">Make This Title Your Personal Selection</button>
+
     <div v-if="catalogues.results">
-      <h1>TV Show Name: {{ catalogues.results[0].name }}</h1>
-      <h1>TV Show Overview: {{ catalogues.results[0].overview }}</h1>
-      <h1>{{ catalogues.results[0].backdrop_path }}</h1>
-      <h1>{{ catalogues.results[0].first_air_date }}</h1>
-      <h1>{{ catalogues.results[0].name }}</h1>
+      <h5>TV Show Name: {{ catalogues.results[0].name }}</h5>
+      <h5>TV Show Overview: {{ catalogues.results[0].overview }}</h5>
+      <h5>{{ catalogues.results[0].backdrop_path }}</h5>
+      <h5>{{ catalogues.results[0].first_air_date }}</h5>
+      <h5>{{ catalogues.results[0].name }}</h5>
     </div>
   </div>
 </template>
@@ -132,8 +134,7 @@
       <p class="group-id">Group Id: {{ group.id }}</p>
       <p class="group-name">Group Name: {{ group.name }}</p>
       <div v-for="group_user in group.users">
-      <p class="group-user-name">User Who Joined Group: {{ group_user.user_id }}</p>
-    
+      <p class="group-user-name">{{ group_user.user_id }}</p>
     </div>
   </div>
 </template>
@@ -170,54 +171,6 @@
     </div>
   </div>
 </template>
-
-<!-- <template id="setup-location-page">
-  <div class="vue-component">
-
-    <div class="container">
-      <h1>Setup Location</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Street Address:</label> 
-        <input type="text" class="form-control" v-model="streetAddress">
-      </div>
-      <div class="form-group">
-        <label>City:</label> 
-        <input type="text" class="form-control" v-model="city">
-      </div>
-      <div class="form-group">
-        <label>State:</label> 
-        <input type="text" class="form-control" v-model="state">
-      </div>
-       <div class="form-group">
-        <label>Zip Code:</label> 
-        <input type="text" class="form-control" v-model="zipCode">
-      </div>
-      <hr>
-      <h1>Food/Beverage Selection</h1>
-      </div>
-       <div class="form-group">
-        <label>What food or beverage item wilk you bring?:</label> 
-        <input type="text" class="form-control" v-model="item">
-      </div>
-       <hr>
-       <h1>Date/Time Selection</h1>
-       <div class="form-group">
-        <label>What date would you like to binge on?:</label> 
-        <input type="text" class="form-control" v-model="date">
-      </div>
-       <div class="form-group">
-        <label>What time will you like to binge on?:</label> 
-        <input type="text" class="form-control" v-model="time">
-      </div>
-      </div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
-      </div>
-    </div>
-  </div>
-</template> -->
 
 <template id="view-location-page">
   <div class="vue-component">

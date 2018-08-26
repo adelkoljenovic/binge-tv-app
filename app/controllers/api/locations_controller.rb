@@ -12,7 +12,7 @@ class Api::LocationsController < ApplicationController
       zip_code: params[:zip_code],
       user_id: current_user.id
     )
-    if @location.save
+    if @location.save!
       render "show.json.jbuilder"
     else
       render json: {errors: @location.errors.full_messages}, status: :unprocessable_entity

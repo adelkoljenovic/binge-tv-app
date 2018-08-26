@@ -147,20 +147,31 @@ var SetupLocationPage = {
       city: "",
       state: "",
       zipCode: "",
+      item: "",
+      date: "",
+      time: "",
       errors: []
     };
   },
   methods: {
     submit: function() {
-      var params = {
+      var params1 = {
         street_address: this.streetAddress,
         city: this.city,
         state: this.state,
         zip_code: this.zipCode
         // what is the errors function doing for this create; errors code was taken from sign up pag? --- do I need?
       };
+      var params2 = {
+        item: this.item,
+      };
+      var params3 = {
+        date: this.date,
+        time: this.time
+      };
+
       axios
-        .post("/api/locations", params)
+        .post("/api/locations", params1)
         .then(function(response) {
           router.push("/");
         })
@@ -169,6 +180,28 @@ var SetupLocationPage = {
             this.errors = error.response.data.errors;
           }.bind(this)
         );
+
+      axios
+        .post("/api/food_bev_selections", params2)
+        .then(function(response) {
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+
+      axios
+        .post("/api/dt_time_selections", params3)
+        .then(function(response) {
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );     
     }
   }
 };
@@ -201,7 +234,6 @@ var ViewLocationPage = {
   },
   computed: {}
 };
-
 
 var HomePage = {
   template: "#home-page",

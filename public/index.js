@@ -221,17 +221,18 @@ var ViewLocationPage = {
     }.bind(this)); 
   },
 
-  methods: {
-    join: function(groupId) {
-      var params = {
-        id: groupId
-      };
-      // console.log("in the join function");
-      axios.post('/api/group_users', params).then(function(response) {
-        console.log(response.data);
-      }.bind(this));
-    }
-  },
+  // below was likely copy and pasted in the wrong section of this file, maybe delete later
+  // methods: {
+  //   join: function(groupId) {
+  //     var params = {
+  //       id: groupId
+  //     };
+  //     // console.log("in the join function");
+  //     axios.post('/api/group_users', params).then(function(response) {
+  //       console.log(response.data);
+  //     }.bind(this));
+  //   }
+  // },
   computed: {}
 };
 
@@ -240,7 +241,8 @@ var HomePage = {
   data: function() {
     return {
       catalogues: [],
-      newSearch: {name: ""}
+      newSearch: {name: ""},
+      title: []
     };
   },
   created: function() {
@@ -261,8 +263,18 @@ var HomePage = {
         console.log('inside callback...');
         this.catalogues = response.data;
       }.bind(this));
+    }, 
+    select: function(title) {
+      var params = {
+        title: this.catalogues.results[0].name
+      };
+      // console.log("in the select function");
+      axios.post('/api/tele_selections', params).then(function(response) {
+        console.log(response.data);
+      }.bind(this));
     }
   },
+
   computed: {}
 };
 

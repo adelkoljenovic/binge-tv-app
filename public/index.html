@@ -36,7 +36,7 @@
     TV Series/Movie Search: <input placeholder="search" v-model='newSearch.name'>
     <button v-on:click="newTvSearch()">Search</button>
 
-    <button class="btn btn-primary" v-on:click="select(catalogues.results[0].name)">Make This Title Your Personal Selection</button>
+    <button class="btn btn-primary" v-on:click="select(title)">Make This Title Your Personal Selection</button>
 
     <div v-if="catalogues.results">
       <h5>TV Show Name: {{ catalogues.results[0].name }}</h5>

@@ -130,11 +130,30 @@
 <template id="view-group-page">
   <div class="vue-component">
     <div v-for="group in groups">
+      <hr>
       <button class="btn btn-primary" v-on:click="join(group.id)">Join this Group</button>
-      <p class="group-id">Group Id: {{ group.id }}</p>
+      <!-- <p class="group-id">Group Id: {{ group.id }}</p> -->
       <p class="group-name">Group Name: {{ group.name }}</p>
-      <div v-for="group_user in group.users">
-      <p class="group-user-name">{{ group_user.user_id }}</p>
+     <!--  <div v-for="group_user in group.users">
+        <strong><p class="group-user-name">{{ group_user.first_name }} {{ group_user.last_name }}</p></strong> -->
+        <div v-for="selection in usersinfo">
+          <strong><p class="test test">{{ selection.user.first_name }} {{ selection.user.last_name }} </p></strong>
+          <p> Selections: </p>
+          <div v-for="show in selection.usertel"> 
+            <p class="usertel-title"> Title: {{ show.title }} </p>
+            <button class="btn btn-primary" v-on:click="selecttv(title)">Click here-Final Selection</button>
+          </div>
+          <div v-for="dt in selection.userdtt">
+            <p class="userdtt-date-time"> Date/Time: {{ dt.date }}, {{ dt.time }}</p>
+          </div>
+          <div v-for="loc in selection.userloc">
+            <p class="userloc-location"> Location: {{ loc.street_address}}, {{ loc.city }}, {{ loc.state }} {{ loc.zip_code }} </p>
+          </div>
+          <div v-for="fb in selection.userfb">
+            <p class="userfb-item"> Item: {{ fb.item }} </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

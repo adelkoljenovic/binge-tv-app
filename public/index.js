@@ -114,7 +114,9 @@ var ViewGroupPage = {
   data: function() {
     return {
       groups: [],
-      group_users: []
+      group_users: [],
+      usersinfo: [],
+      title: []
     };
   },
   created: function() {
@@ -122,6 +124,10 @@ var ViewGroupPage = {
     axios.get('/api/groups').then(function(response) {
       console.log(response.data);
       this.groups = response.data;
+    }.bind(this)); 
+    axios.get('api/users').then(function(response) {
+      console.log(response.data);
+      this.usersinfo = response.data;
     }.bind(this)); 
   },
 
@@ -132,6 +138,14 @@ var ViewGroupPage = {
       };
       // console.log("in the join function");
       axios.post('/api/group_users', params).then(function(response) {
+        console.log(response.data);
+      }.bind(this));
+    },
+    selecttv: function(title) {
+      var params = {
+        title: this.show.title
+      };
+      axios.post('/api/events', params).then(function(response) {
         console.log(response.data);
       }.bind(this));
     }

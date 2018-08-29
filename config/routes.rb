@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     get "dt_time_selections" => "dt_time_selections#index"
     post "dt_time_selections" => "dt_time_selections#create"
 
+    post "events" => "events#create"
+
+    get "/users" => "users#index"
     # Signup, login & logout
     post "/users" => "users#create"
     post "/sessions" => "sessions#create"
